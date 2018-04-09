@@ -1,0 +1,41 @@
+﻿using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using Android.App;
+
+[assembly: SuppressIldasm]
+
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//[assembly: AssemblyTitle("SmartisanOS_SDK")]
+//[assembly: AssemblyDescription("")]
+//[assembly: AssemblyConfiguration("")]
+//[assembly: AssemblyCompany("")]
+//[assembly: AssemblyProduct("SmartisanOS-SDK")]
+//[assembly: AssemblyCopyright("Copyright ©  2018")]
+//[assembly: AssemblyTrademark("")]
+//[assembly: AssemblyCulture("")]
+[assembly: ComVisible(false)]
+
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Build and Revision Numbers 
+// by using the '*' as shown below:
+// [assembly: AssemblyVersion("1.0.*")]
+[assembly: AssemblyVersion("1.0.2")]
+[assembly: AssemblyFileVersion("1.0.2")]
+
+/*
+ * Android Studio Build
+ * gradle wrapper buildJar
+ * output SmartisanOS-SDK\LibSmartisanosApi\build\libs\smartisanos-api-1.0.2.jar
+ * gradle wrapper buildJarDoc
+ * output SmartisanOS-SDK\LibSmartisanosApi\build\docs\javadoc
+ * https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/customizing-bindings/naming-parameters-with-javadoc
+ */

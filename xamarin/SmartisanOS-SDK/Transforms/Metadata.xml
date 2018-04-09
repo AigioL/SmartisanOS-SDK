@@ -1,0 +1,4 @@
+﻿<metadata>
+  <attr path="/api/package[@name='smartisanos.api']" name="managedName">SmartisanOS.API</attr>
+  <attr path="/api/package[@name='smartisanos.util']" name="managedName">SmartisanOS.Util</attr>
+</metadata>

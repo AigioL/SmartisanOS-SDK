@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>SmartisanOS-SDK</id>
+    <version>1.0.2</version>
+	<authors>https://github.com/SmartisanTech</authors>
+	<description>https://github.com/AigioL/SmartisanOS-SDK/blob/smartisan/README.md</description>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://raw.githubusercontent.com/AigioL/SmartisanOS-SDK/smartisan/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/AigioL/SmartisanOS-SDK</projectUrl>
+    <tags>smartisanos xamarin android binding xamarin-binding xamarin-android-binding</tags>
+    <repository type="git" url="https://github.com/AigioL/SmartisanOS-SDK.git" />
+  </metadata>
+  <files>
+    <file src="SmartisanOS-SDK/bin/Release/SmartisanOS-SDK.dll" target="lib\MonoAndroid44\SmartisanOS-SDK.dll" />
+    <file src="SmartisanOS-SDK/bin/Release/SmartisanOS-SDK.xml" target="lib\MonoAndroid44\SmartisanOS-SDK.xml" />
+  </files>
+</package>

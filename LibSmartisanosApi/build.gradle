@@ -1,7 +1,11 @@
 import com.android.build.gradle.AppPlugin
 import com.android.build.gradle.LibraryPlugin
 import proguard.gradle.ProGuardTask
+
 apply plugin: 'com.android.library'
+
+println("gradleVersion " + project.gradle.gradleVersion);
+println("gradleVersion " + project.gradle.gradleHomeDir.absolutePath);
 
 def VERSIONCODE = 2
 def VERSIONNAME = "1.0.2"
@@ -12,13 +16,13 @@ android {
     sourceSets {
 
         main {
-            assets.srcDirs       = ['src/main/assets']
+            assets.srcDirs = ['src/main/assets']
             jniLibs.srcDirs = ['src/main/libs']
-            res.srcDirs          = ['src/main/res']
-            aidl.srcDirs         = ['src/main/java']
-            resources.srcDirs    = ['src/main/java']
+            res.srcDirs = ['src/main/res']
+            aidl.srcDirs = ['src/main/java']
+            resources.srcDirs = ['src/main/java']
             renderscript.srcDirs = ['src/main/java']
-            java.srcDirs         = ['src/main/java']
+            java.srcDirs = ['src/main/java']
             manifest.srcFile 'src/main/AndroidManifest.xml'
         }
 
@@ -55,7 +59,7 @@ task buildJarDoc(type: Javadoc) {
         author true
         version true
         links "http://docs.oracle.com/javase/7/docs/api"
-        linksOffline "http://d.android.com/reference","${android.sdkDirectory}/docs/reference"
+        linksOffline "http://d.android.com/reference", "${android.sdkDirectory}/docs/reference"
     }
     exclude '**/BuildConfig.java'
     exclude '**/R.java'
@@ -64,7 +68,6 @@ task buildJarDoc(type: Javadoc) {
     exclude 'android/view/**'
     exclude '**/SidebarUtils.java'
 }
-
 
 //dependsOn 可根据实际需要增加或更改
 task buildJar(dependsOn: ['compileReleaseJavaWithJavac'], type: Jar) {
@@ -81,10 +84,10 @@ task buildJar(dependsOn: ['compileReleaseJavaWithJavac'], type: Jar) {
     //初始化资源路径集
     from srcClassDir
     //去除路径集下部分的资源
-        exclude "smartisanos/api/BuildConfig.class"
-        exclude "smartisanos/api/BuildConfig\$*.class"
-        exclude "**/R.class"
-        exclude "**/R\$*.class"
+    exclude "smartisanos/api/BuildConfig.class"
+    exclude "smartisanos/api/BuildConfig\$*.class"
+    exclude "**/R.class"
+    exclude "**/R\$*.class"
     //只导入资源路径集下的部分资源
     //include "smartisanos/api/**/*.class"
     //注: exclude include 支持可变长参数
@@ -99,8 +102,10 @@ task proguardJar(dependsOn: ['buildJar'], type: ProGuardTask) {
     String inJar = buildJar.archivePath.getAbsolutePath()
     //输入 jar
     injars inJar
+    String outJar = inJar.substring(0, inJar.lastIndexOf(java.io.File.separator)) + "${java.io.File.separator}proguard-${buildJar.archiveName}"
     //输出 jar
-    outjars inJar.substring(0, inJar.lastIndexOf('/')) + "/proguard-${buildJar.archiveName}"
+    outjars outJar
+    print(outJar)
     //设置不删除未引用的资源(类，方法等)
     dontshrink
     Plugin plugin = getPlugins().hasPlugin(AppPlugin) ?

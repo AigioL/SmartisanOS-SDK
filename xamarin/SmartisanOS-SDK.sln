@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2027
+MinimumVisualStudioVersion = 15.0.00000.0
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartisanOS-SDK", "SmartisanOS-SDK\SmartisanOS-SDK.csproj", "{099656A8-B2B5-4649-A36D-C812B6E5E44A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Sample\Sample.csproj", "{80D47F61-0414-4288-9072-D73EE78B9130}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{099656A8-B2B5-4649-A36D-C812B6E5E44A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{099656A8-B2B5-4649-A36D-C812B6E5E44A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{099656A8-B2B5-4649-A36D-C812B6E5E44A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{099656A8-B2B5-4649-A36D-C812B6E5E44A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80D47F61-0414-4288-9072-D73EE78B9130}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80D47F61-0414-4288-9072-D73EE78B9130}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80D47F61-0414-4288-9072-D73EE78B9130}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{80D47F61-0414-4288-9072-D73EE78B9130}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80D47F61-0414-4288-9072-D73EE78B9130}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80D47F61-0414-4288-9072-D73EE78B9130}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {90A93E43-4C77-4978-AE6A-002732B45666}
+	EndGlobalSection
+EndGlobal
