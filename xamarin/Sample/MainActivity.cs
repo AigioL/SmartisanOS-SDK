@@ -1,17 +1,14 @@
-﻿using Android.App;
+﻿using System.IO;
+using Android.App;
 using Android.Content;
 using Android.Graphics;
 using Android.Net;
 using Android.OS;
-using Android.View;
 using Android.Views;
 using Android.Widget;
-
-using Java.IO;
 using Java.Lang;
 using SmartisanOS.API;
-using SmartisanOS.Util;
-
+using File = Java.IO.File;
 using R = Sample.Resource;
 using Stream = System.IO.Stream;
 
@@ -183,7 +180,7 @@ namespace Sample
                 Toast.MakeText(this, "Drag started", ToastLength.Short).Show();
                 return false;
             });
-            btn_show_popup.SetOnClickListener(new OnClickListener(view =>
+            btn_show_popup.SetOnClickListener(view =>
             {
                 if (mOneStepHelper.IsOneStepShowing)
                 {
@@ -193,7 +190,7 @@ namespace Sample
                         btn_show_popup.Left,
                         btn_show_popup.Top);
                 }
-            }));
+            });
 
             var btn_hide_popup = FindViewById<Button>(R.Id.btn_hide_popup);
             btn_hide_popup.SetOnClickListener(view =>
@@ -204,15 +201,15 @@ namespace Sample
             FindViewById(R.Id.btn_s_b_l).SetOnClickListener(view =>
             {
                 // 状态栏 亮
-                StatusBarUtils.SetLightStatusBar(Window, true);
                 StatusBarUtils.SetStatusBarColor(Window, Color.White);
+                StatusBarUtils.SetLightStatusBar(Window, true);
             });
 
             FindViewById(R.Id.btn_s_b_d).SetOnClickListener(view =>
             {
                 // 状态栏 暗
-                StatusBarUtils.SetLightStatusBar(Window, false);
                 StatusBarUtils.SetStatusBarColor(Window, Color.Black);
+                StatusBarUtils.SetLightStatusBar(Window, false);
             });
         }
 
@@ -238,8 +235,10 @@ namespace Sample
             try
             {
                 var destFilePath = createTestFileIfNotExists(assetFile).AbsolutePath;
+                var destFileInfo = new FileInfo(destFilePath);
+                if (destFileInfo.Exists) destFileInfo.Delete();
                 using (var stream = Assets.Open(assetFile))
-                using (var fileStream = System.IO.File.OpenWrite(destFilePath))
+                using (var fileStream = destFileInfo.Create())
                     stream.CopyTo(fileStream);
             }
             catch (Throwable e)

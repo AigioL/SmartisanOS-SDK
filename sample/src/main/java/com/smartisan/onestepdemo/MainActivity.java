@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
@@ -23,7 +24,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import smartisanos.api.OneStepHelper;
-import smartisanos.util.SidebarUtils;
+import smartisanos.api.StatusBarUtils;
 
 public class MainActivity extends Activity {
 
@@ -58,7 +59,7 @@ public class MainActivity extends Activity {
                 if (mOneStepHelper.isOneStepShowing()) {
                     mOneStepHelper.dragText(v, "永远年轻,永远热泪盈眶!");
                     return true;
-                }else {
+                } else {
                     Toast.makeText(MainActivity.this, "还没进入OneStep模式呢.", Toast.LENGTH_SHORT).show();
                 }
                 return false;
@@ -222,6 +223,20 @@ public class MainActivity extends Activity {
                 }
             }
         });
+
+        findViewById(R.id.btn_s_b_l).setOnClickListener(view ->
+        {
+            // 状态栏 亮
+            StatusBarUtils.setStatusBarColor(getWindow(), Color.WHITE);
+            StatusBarUtils.setLightStatusBar(getWindow(), true);
+        });
+
+        findViewById(R.id.btn_s_b_d).setOnClickListener(view ->
+        {
+            // 状态栏 暗
+            StatusBarUtils.setStatusBarColor(getWindow(), Color.BLACK);
+            StatusBarUtils.setLightStatusBar(getWindow(), false);
+        });
     }
 
 
@@ -246,11 +261,11 @@ public class MainActivity extends Activity {
             outputStream = new FileOutputStream(f);
             byte[] buf = new byte[1024 * 4];
             int len = 0;
-            while((len = inputStream.read(buf)) > 0) {
+            while ((len = inputStream.read(buf)) > 0) {
                 outputStream.write(buf, 0, len);
             }
             outputStream.flush();
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         } finally {
             try {
@@ -260,7 +275,8 @@ public class MainActivity extends Activity {
                 if (inputStream != null) {
                     inputStream.close();
                 }
-            } catch (IOException e) {}
+            } catch (IOException e) {
+            }
         }
     }
 

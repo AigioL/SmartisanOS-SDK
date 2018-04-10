@@ -11,31 +11,30 @@ namespace Sample
         public static void SetOnLongClickListener(this View view, Func<View, bool> func) => view.SetOnLongClickListener(new OnLongClickListener(func));
     }
 
-    public class OnClickListener : ClickListener<Action<View>>, View.IOnClickListener
+    internal class OnClickListener : ViewListener<Action<View>>, View.IOnClickListener
     {
-        public OnClickListener(Action<View> action) : base(action) { }
+        internal OnClickListener(Action<View> action) : base(action) { }
         void View.IOnClickListener.OnClick(View v) => function(v);
     }
 
-    public class OnLongClickListener : ClickListener<Func<View, bool>>, View.IOnLongClickListener
+    internal class OnLongClickListener : ViewListener<Func<View, bool>>, View.IOnLongClickListener
     {
-        public OnLongClickListener(Func<View, bool> func) : base(func) { }
+        internal OnLongClickListener(Func<View, bool> func) : base(func) { }
         bool View.IOnLongClickListener.OnLongClick(View v) => function(v);
     }
 
-    public class OnDragListener : ClickListener<Func<View, DragEvent, bool>>, View.IOnDragListener
+    internal class OnDragListener : ViewListener<Func<View, DragEvent, bool>>, View.IOnDragListener
     {
-        public OnDragListener(Func<View, DragEvent, bool> function) : base(function) { }
-
+        internal OnDragListener(Func<View, DragEvent, bool> function) : base(function) { }
         bool View.IOnDragListener.OnDrag(View v, DragEvent e) => function(v, e);
     }
 }
 
 namespace Sample.Internal
 {
-    public abstract class ClickListener<TFunction> : JavaObject
+    internal abstract class ViewListener<TFunction> : JavaObject
     {
         protected readonly TFunction function;
-        protected ClickListener(TFunction function) => this.function = function;
+        protected ViewListener(TFunction function) => this.function = function;
     }
 }
